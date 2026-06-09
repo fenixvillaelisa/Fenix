@@ -428,12 +428,12 @@ footer { background: var(--azul-oscuro); padding: 3rem 2rem 2rem; border-top: 3p
 .footer-contact-icon--wsp {
   background: var(--azul-oscuro);
   color: #25D366;
-  border: 1.5px solid rgba(255,255,255,0.6);
+  border: none;
 }
 .footer-contact-icon--ig {
   background: var(--azul-oscuro);
   color: #e1306c;
-  border: 1.5px solid rgba(255,255,255,0.6);
+  border: none;
 }
 .footer-contact-text {
   color: rgba(255,255,255,0.75);
@@ -443,3 +443,9 @@ footer { background: var(--azul-oscuro); padding: 3rem 2rem 2rem; border-top: 3p
   transition: color 0.2s;
 }
 .footer-contact-text:hover { color: var(--blanco); }
+
+.footer-contact-icon--mail {
+  background: var(--azul-oscuro);
+  color: var(--celeste);
+  border: none;
+}
