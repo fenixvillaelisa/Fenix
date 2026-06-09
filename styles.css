@@ -418,20 +418,20 @@ footer { background: var(--azul-oscuro); padding: 3rem 2rem 2rem; border-top: 3p
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 34px; height: 34px;
-  border-radius: 8px;
+  width: 22px; height: 22px;
+  border-radius: 4px;
   flex-shrink: 0;
   transition: transform 0.2s, opacity 0.2s;
   text-decoration: none;
 }
 .footer-contact-icon:hover { transform: scale(1.1); opacity: 0.85; }
 .footer-contact-icon--wsp {
-  background: var(--azul-oscuro);
+  background: transparent;
   color: #25D366;
   border: none;
 }
 .footer-contact-icon--ig {
-  background: var(--azul-oscuro);
+  background: transparent;
   color: #e1306c;
   border: none;
 }
@@ -445,7 +445,7 @@ footer { background: var(--azul-oscuro); padding: 3rem 2rem 2rem; border-top: 3p
 .footer-contact-text:hover { color: var(--blanco); }
 
 .footer-contact-icon--mail {
-  background: var(--azul-oscuro);
+  background: transparent;
   color: var(--celeste);
   border: none;
 }
@@ -456,4 +456,5 @@ footer { background: var(--azul-oscuro); padding: 3rem 2rem 2rem; border-top: 3p
 }
 .footer-col--horarios ul li {
   margin-bottom: 0.45rem;
+  line-height: 1.4;
 }
