@@ -449,3 +449,11 @@ footer { background: var(--azul-oscuro); padding: 3rem 2rem 2rem; border-top: 3p
   color: var(--celeste);
   border: none;
 }
+
+/* ─── Alinear horarios con contacto ─── */
+.footer-col--horarios {
+  padding-top: 0.55rem;
+}
+.footer-col--horarios ul li {
+  margin-bottom: 0.65rem;
+}
