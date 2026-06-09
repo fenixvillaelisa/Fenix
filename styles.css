@@ -400,7 +400,7 @@ footer { background: var(--azul-oscuro); padding: 3rem 2rem 2rem; border-top: 3p
 
 @media (max-width: 768px) {
   .hamburger { display: flex; }
-  .beneficios-grid { grid-template-columns: 1fr 1fr; }
+  .beneficios-grid { grid-template-columns: 1fr; }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
