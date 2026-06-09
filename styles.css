@@ -13,6 +13,21 @@
 html { scroll-behavior: smooth; }
 body { font-family: 'Nunito', sans-serif; color: var(--azul-oscuro); background: var(--blanco); overflow-x: hidden; }
 
+/* ─── NAV TRANSPARENTE :root {
+  --azul-oscuro: #0a2a5e;
+  --azul-medio: #1251a3;
+  --azul-claro: #3a8fd4;
+  --celeste: #a8d4f5;
+  --celeste-light: #dceefb;
+  --blanco: #ffffff;
+  --gris-claro: #f4f7fc;
+  --gris-texto: #4a5568;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Nunito', sans-serif; color: var(--azul-oscuro); background: var(--blanco); overflow-x: hidden; }
+
 /* ─── NAV TRANSPARENTE ─── */
 nav {
   position: fixed;
@@ -412,7 +427,7 @@ footer { background: var(--azul-oscuro); padding: 3rem 2rem 2rem; border-top: 3p
   display: flex !important;
   align-items: center;
   gap: 0.7rem;
-  margin-bottom: 0.7rem !important;
+  margin-bottom: 0.55rem !important;
 }
 .footer-contact-icon {
   display: flex;
