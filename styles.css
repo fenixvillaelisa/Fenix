@@ -425,8 +425,16 @@ footer { background: var(--azul-oscuro); padding: 3rem 2rem 2rem; border-top: 3p
   text-decoration: none;
 }
 .footer-contact-icon:hover { transform: scale(1.1); opacity: 0.85; }
-.footer-contact-icon--wsp  { background: #25D366; color: #fff; }
-.footer-contact-icon--ig   { background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); color: #fff; }
+.footer-contact-icon--wsp {
+  background: var(--azul-oscuro);
+  color: #25D366;
+  border: 1.5px solid #25D366;
+}
+.footer-contact-icon--ig {
+  background: var(--azul-oscuro);
+  color: #e1306c;
+  border: 1.5px solid #e1306c;
+}
 .footer-contact-text {
   color: rgba(255,255,255,0.75);
   font-size: 0.9rem;
