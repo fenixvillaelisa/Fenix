@@ -428,12 +428,12 @@ footer { background: var(--azul-oscuro); padding: 3rem 2rem 2rem; border-top: 3p
 .footer-contact-icon--wsp {
   background: var(--azul-oscuro);
   color: #25D366;
-  border: 1.5px solid #25D366;
+  border: 1.5px solid rgba(255,255,255,0.6);
 }
 .footer-contact-icon--ig {
   background: var(--azul-oscuro);
   color: #e1306c;
-  border: 1.5px solid #e1306c;
+  border: 1.5px solid rgba(255,255,255,0.6);
 }
 .footer-contact-text {
   color: rgba(255,255,255,0.75);
