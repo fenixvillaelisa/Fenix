@@ -1,38 +1,35 @@
 ﻿// ─── Nav: transparente → azul opaco progresivo al hacer scroll ───
 const mainNav = document.getElementById('main-nav');
-const NAV_START = 40;   // px desde donde empieza a opacarse
-const NAV_END   = 220;  // px donde llega a 100% opacidad
+const NAV_START = 20;   // px desde donde empieza a opacarse
+const NAV_END   = 160;  // px donde llega a 100% opacidad (rápido)
 
 function updateNav() {
   const y = window.scrollY;
+  let alpha;
 
   if (y <= NAV_START) {
-    // Totalmente transparente
-    mainNav.style.background = 'transparent';
-    mainNav.style.boxShadow  = 'none';
-    mainNav.classList.add('nav-transparent');
-    mainNav.classList.remove('nav-solid');
+    alpha = 0;
   } else if (y >= NAV_END) {
-    // Totalmente sólido
-    mainNav.style.background = '';
-    mainNav.style.boxShadow  = '';
-    mainNav.classList.remove('nav-transparent');
-    mainNav.classList.add('nav-solid');
+    alpha = 1;
   } else {
-    // Zona de transición: interpolar opacidad 0 → 1
-    const progress = (y - NAV_START) / (NAV_END - NAV_START);
-    const alpha    = Math.round(progress * 97) / 100; // 0.00 → 0.97
-    mainNav.style.background = `rgba(10,42,94,${alpha})`;
-    mainNav.style.boxShadow  = progress > 0.3
-      ? `0 2px 20px rgba(0,0,0,${progress * 0.35})`
-      : 'none';
-    mainNav.classList.remove('nav-transparent', 'nav-solid');
+    alpha = (y - NAV_START) / (NAV_END - NAV_START);
   }
 
-  // Links y logo: blanco siempre (sobre fondo oscuro o transparente en hero azul)
+  // Fondo: de transparente a azul oscuro
+  mainNav.style.background = alpha === 0
+    ? 'transparent'
+    : `rgba(10,42,94,${alpha.toFixed(2)})`;
+
+  // Sombra aparece gradualmente
+  mainNav.style.boxShadow = alpha > 0.2
+    ? `0 2px 20px rgba(0,0,0,${(alpha * 0.35).toFixed(2)})`
+    : 'none';
+
+  // Links y logo: SIEMPRE blancos, sin importar el estado
+  // (se fuerza via CSS con !important, no se toca desde JS)
 }
 window.addEventListener('scroll', updateNav, { passive: true });
-updateNav(); // estado inicial
+updateNav();
 
 // ─── Hamburger menu ───
 const hamburger = document.getElementById('hamburger');
