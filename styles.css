@@ -257,6 +257,7 @@ section { padding: 5rem 2rem; }
   background: rgba(10,42,94,0.72);
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   gap: 0.2rem; color: var(--blanco); border-radius: 12px;
+  text-align: center; padding: 0 1rem;
   transition: background 0.3s;
 }
 .galeria-item--more:hover .galeria-more-overlay { background: rgba(10,42,94,0.55); }
@@ -362,6 +363,8 @@ footer { background: var(--azul-oscuro); padding: 3rem 2rem 2rem; border-top: 3p
   .servicios-grid { grid-template-columns: 1fr; }
   .galeria-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
   .galeria-item:first-child { grid-row: auto; }
+  .galeria-item--more { grid-column: span 2; }
+  .galeria-item--more img { max-height: 260px; }
   .footer-inner { grid-template-columns: 1fr; }
   .strip { gap: 1.2rem; }
   .strip-item { font-size: 0.78rem; }
@@ -507,12 +510,17 @@ footer { background: var(--azul-oscuro); padding: 3rem 2rem 2rem; border-top: 3p
   transform-origin: top center;
   transition: transform 0.4s ease;
   -webkit-tap-highlight-color: transparent;
+  /* El tramo superior del cable queda bajo el nav: solo la cabeza de la
+     lámpara recibe clicks para que la barra no los intercepte */
+  pointer-events: none;
 }
+.lamp-toggle .lamp-shade,
+.lamp-toggle .lamp-bulb { pointer-events: auto; cursor: pointer; }
 .lamp-toggle:hover { transform: rotate(-2.5deg); }
 .lamp-toggle:focus-visible { outline: 2px solid var(--celeste); outline-offset: 4px; border-radius: 8px; }
 .lamp-cord {
   width: 3px;
-  height: 96px;
+  height: 118px;
   background: linear-gradient(180deg, rgba(6,20,46,0.9), #06142e);
   border-radius: 0 0 2px 2px;
 }
@@ -554,7 +562,7 @@ body.night .lamp-shade { background: linear-gradient(180deg, #081c40 20%, #0b2a5
 
 @media (max-width: 768px) {
   .lamp-toggle { right: 1.1rem; }
-  .lamp-cord { height: 66px; }
+  .lamp-cord { height: 86px; }
   .lamp-shade { width: 40px; height: 25px; }
   .lamp-bulb { width: 18px; height: 18px; margin-top: -6px; }
 }
@@ -617,6 +625,8 @@ body.night .footer-bottom { border-top-color: rgba(255,255,255,0.08); }
   margin-top: 3rem;
   align-items: center;
 }
+/* min-width evita que el contenido fuerce desborde horizontal en mobile */
+.resenas-layout > * { min-width: 0; }
 .resenas-card {
   background: var(--gris-claro);
   border: 1px solid transparent;
@@ -633,7 +643,7 @@ body.night .footer-bottom { border-top-color: rgba(255,255,255,0.08); }
   border-color: var(--celeste);
   box-shadow: 0 8px 32px rgba(10,42,94,0.1), 0 0 22px rgba(58,143,212,0.22);
 }
-.resenas-google { display: flex; align-items: center; gap: 1.2rem; }
+.resenas-google { display: flex; align-items: center; justify-content: center; gap: 1.2rem; flex-wrap: wrap; }
 .resenas-rating { display: flex; align-items: baseline; gap: 0.6rem; }
 .resenas-num {
   font-family: var(--font-titulos);
