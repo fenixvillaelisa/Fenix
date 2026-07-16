@@ -620,10 +620,10 @@ body.night .footer-bottom { border-top-color: rgba(255,255,255,0.08); }
 .resenas { background: var(--blanco); }
 .resenas-layout {
   display: grid;
-  grid-template-columns: 5fr 6fr;
+  grid-template-columns: 2fr 3fr;
   gap: 1.5rem;
   margin-top: 3rem;
-  align-items: center;
+  align-items: stretch;
 }
 /* min-width evita que el contenido fuerce desborde horizontal en mobile */
 .resenas-layout > * { min-width: 0; }
@@ -663,17 +663,38 @@ body.night .footer-bottom { border-top-color: rgba(255,255,255,0.08); }
 .resenas-fuente { font-size: 0.85rem; font-weight: 700; color: var(--gris-texto); }
 .resenas-texto { color: var(--gris-texto); font-size: 0.95rem; line-height: 1.7; max-width: 420px; }
 
-.resenas-lista { display: flex; flex-direction: column; gap: 1rem; }
+/* Carrusel de reseñas: misma altura que la card de calificación */
+.resenas-carousel { display: flex; flex-direction: column; height: 100%; }
+.resenas-viewport { overflow: hidden; flex: 1; border-radius: 16px; }
+.resenas-track { display: flex; height: 100%; transition: transform 0.5s ease; }
 .resena-item {
+  flex: 0 0 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background: var(--gris-claro);
   border: 1px solid transparent;
-  border-radius: 12px;
-  padding: 1.2rem 1.4rem;
+  border-radius: 16px;
+  padding: 2rem 2.2rem;
+  margin: 0;
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 .resena-item:hover {
   border-color: var(--celeste);
   box-shadow: 0 0 18px rgba(58,143,212,0.18);
+}
+.resenas-dots { display: flex; justify-content: center; gap: 0.6rem; margin-top: 1rem; }
+.resena-dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  border: none; padding: 0; cursor: pointer;
+  background: #cdd9ea;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+.resena-dot.active {
+  background: var(--azul-claro);
+  box-shadow: 0 0 10px rgba(58,143,212,0.6);
+  transform: scale(1.2);
 }
 .resena-stars {
   color: #f5b942;
@@ -708,3 +729,9 @@ body.night .resenas-num { color: var(--celeste-light); }
 body.night .resenas-stars-bg { color: rgba(255,255,255,0.18); }
 body.night .resena-item { background: rgba(255,255,255,0.05); border-color: rgba(168,212,245,0.15); }
 body.night .resena-item figcaption { color: var(--celeste); }
+body.night .resena-dot { background: rgba(255,255,255,0.2); }
+body.night .resena-dot.active { background: var(--celeste); }
+
+/* Links discretos: mismo color que el texto, se revelan al pasar el cursor */
+.link-quiet { color: inherit; text-decoration: none; transition: color 0.2s, text-shadow 0.2s; }
+.link-quiet:hover { color: var(--celeste); text-shadow: 0 0 10px rgba(168,212,245,0.6); }
