@@ -102,6 +102,51 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape')     closeLightbox();
 });
 
+// Deslizar con el dedo para pasar de foto (mobile)
+(function () {
+  const lb = document.getElementById('lightbox');
+  let startX = null;
+  lb.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', (e) => {
+    if (startX === null) return;
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 40) navLightbox(dx < 0 ? 1 : -1);
+    startX = null;
+  }, { passive: true });
+})();
+
+// ─── Carrusel de reseñas ───
+let resenaIndex = 0;
+const resenasTrack = document.getElementById('resenas-track');
+const resenaDots = document.querySelectorAll('.resena-dot');
+const RESENAS_TOTAL = resenaDots.length;
+let resenaTimer = null;
+
+function goResena(i, manual = true) {
+  resenaIndex = (i + RESENAS_TOTAL) % RESENAS_TOTAL;
+  resenasTrack.style.transform = 'translateX(-' + (resenaIndex * 100) + '%)';
+  resenaDots.forEach((d, j) => d.classList.toggle('active', j === resenaIndex));
+  if (manual) startResenaTimer();
+}
+function startResenaTimer() {
+  clearInterval(resenaTimer);
+  resenaTimer = setInterval(() => goResena(resenaIndex + 1, false), 6000);
+}
+if (resenasTrack) {
+  startResenaTimer();
+  const viewport = document.getElementById('resenas-viewport');
+  viewport.addEventListener('mouseenter', () => clearInterval(resenaTimer));
+  viewport.addEventListener('mouseleave', startResenaTimer);
+  let swipeX = null;
+  viewport.addEventListener('touchstart', (e) => { swipeX = e.touches[0].clientX; }, { passive: true });
+  viewport.addEventListener('touchend', (e) => {
+    if (swipeX === null) return;
+    const dx = e.changedTouches[0].clientX - swipeX;
+    if (Math.abs(dx) > 40) goResena(resenaIndex + (dx < 0 ? 1 : -1));
+    swipeX = null;
+  }, { passive: true });
+}
+
 // ─── Scroll fade-in ───
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });

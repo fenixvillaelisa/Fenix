@@ -124,7 +124,7 @@
 <div class="strip">
   <div class="strip-item"><span class="material-icons-round">schedule</span>Lunes a Viernes: 09:00 a 17:00 hs</div>
   <div class="strip-item"><span class="material-icons-round">schedule</span>Sábados: 09:00 a 14:00 hs</div>
-  <div class="strip-item"><span class="material-icons-round">location_on</span>Calle 419 esq. 5, Villa Elisa</div>
+  <div class="strip-item"><span class="material-icons-round">location_on</span><a href="https://maps.app.goo.gl/kbZXAbWBu664RXo49" target="_blank" class="link-quiet">Calle 419 esq. 5, Villa Elisa</a></div>
 </div>
 
 <!-- POR QUÉ ELEGIRNOS -->
@@ -282,22 +282,31 @@
           Leé las reseñas en Google
         </a>
       </div>
-      <div class="resenas-lista">
-        <figure class="resena-item">
-          <div class="resena-stars" aria-label="5 de 5 estrellas">★★★★★</div>
-          <blockquote>"Excelente atención. Gran variedad de productos para todos los bolsillos. Es una zona transitada pero en una o dos cuadras se estaciona fácil. Se puede llegar tanto en micro como en tren. Acepta pagos con tarjeta de crédito y débito."</blockquote>
-          <figcaption>Jose Raganato · Reseña de Google</figcaption>
-        </figure>
-        <figure class="resena-item">
-          <div class="resena-stars" aria-label="5 de 5 estrellas">★★★★★</div>
-          <blockquote>"Lo mejor en artefactos y artículos de iluminación."</blockquote>
-          <figcaption>Jorge Mellibovsky · Reseña de Google</figcaption>
-        </figure>
-        <figure class="resena-item">
-          <div class="resena-stars" aria-label="5 de 5 estrellas">★★★★★</div>
-          <blockquote>"Muy buena atención y buenos precios."</blockquote>
-          <figcaption>Luis Bavestrello · Reseña de Google</figcaption>
-        </figure>
+      <div class="resenas-carousel">
+        <div class="resenas-viewport" id="resenas-viewport">
+          <div class="resenas-track" id="resenas-track">
+            <figure class="resena-item">
+              <div class="resena-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+              <blockquote>"Excelente atención. Gran variedad de productos para todos los bolsillos. Es una zona transitada pero en una o dos cuadras se estaciona fácil. Se puede llegar tanto en micro como en tren. Acepta pagos con tarjeta de crédito y débito."</blockquote>
+              <figcaption>Jose Raganato · Reseña de Google</figcaption>
+            </figure>
+            <figure class="resena-item">
+              <div class="resena-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+              <blockquote>"Lo mejor en artefactos y artículos de iluminación."</blockquote>
+              <figcaption>Jorge Mellibovsky · Reseña de Google</figcaption>
+            </figure>
+            <figure class="resena-item">
+              <div class="resena-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+              <blockquote>"Muy buena atención y buenos precios."</blockquote>
+              <figcaption>Luis Bavestrello · Reseña de Google</figcaption>
+            </figure>
+          </div>
+        </div>
+        <div class="resenas-dots" id="resenas-dots" role="tablist" aria-label="Reseñas">
+          <button class="resena-dot active" onclick="goResena(0)" aria-label="Reseña 1"></button>
+          <button class="resena-dot" onclick="goResena(1)" aria-label="Reseña 2"></button>
+          <button class="resena-dot" onclick="goResena(2)" aria-label="Reseña 3"></button>
+        </div>
       </div>
     </div>
   </div>
@@ -323,7 +332,7 @@
         <div class="ubicacion-info">
           <div class="ubicacion-dato">
             <span class="material-icons-round">location_on</span>
-            <div><strong>Dirección</strong><span>Calle 419 esq. 5, Villa Elisa, La Plata</span></div>
+            <div><strong>Dirección</strong><span><a href="https://maps.app.goo.gl/kbZXAbWBu664RXo49" target="_blank" class="link-quiet">Calle 419 esq. 5, Villa Elisa, La Plata</a></span></div>
           </div>
           <div class="ubicacion-dato">
             <span class="material-icons-round">schedule</span>
@@ -386,7 +395,7 @@
       </ul>
     </div>
   </div>
-  <div class="footer-bottom">© 2026 Fenix Electricidad e Iluminación · Villa Elisa<br>Web realizada por REDLABS</div>
+  <div class="footer-bottom">© 2026 Fenix Electricidad e Iluminación · Villa Elisa<br>Web realizada por <a href="https://www.redlabs.digital/" target="_blank" class="link-quiet">REDLABS</a></div>
 </footer>
 
 <!-- BOTÓN FLOTANTE WSP -->
