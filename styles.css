@@ -7,6 +7,8 @@
   --blanco: #ffffff;
   --gris-claro: #f4f7fc;
   --gris-texto: #4a5568;
+  --font-titulos: 'Montserrat', sans-serif;
+  --glow-suave: 0 0 18px rgba(58,143,212,0.28);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -52,9 +54,11 @@ nav .nav-links a:visited {
   text-decoration-color: rgba(255,255,255,0.35);
   transition: color 0.2s, text-decoration-color 0.2s;
 }
-nav .nav-links a:hover {
+nav .nav-links a:hover,
+nav .nav-links a:focus-visible {
   color: var(--celeste) !important;
   text-decoration-color: var(--celeste);
+  text-shadow: 0 0 12px rgba(168,212,245,0.85);
 }
 
 /* Logo: siempre sin filter (PNG original, fondo transparente) */
@@ -128,11 +132,12 @@ nav .hamburger span { background: var(--blanco) !important; }
   justify-content: center;
 }
 .hero-text h1 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(3.5rem, 8vw, 7rem);
+  font-family: var(--font-titulos);
+  font-weight: 800;
+  font-size: clamp(2.4rem, 5.5vw, 4.6rem);
   color: var(--blanco);
-  line-height: 0.92;
-  letter-spacing: 2px;
+  line-height: 1.08;
+  letter-spacing: 0.5px;
 }
 .hero-text h1 .linea-acento { color: var(--celeste); }
 .hero-text p {
@@ -152,7 +157,8 @@ nav .hamburger span { background: var(--blanco) !important; }
   transition: transform 0.2s, box-shadow 0.2s;
   box-shadow: 0 4px 20px rgba(58,143,212,0.4);
 }
-.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(58,143,212,0.55); }
+.btn-primary:hover,
+.btn-primary:focus-visible { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(58,143,212,0.55), 0 0 22px rgba(168,212,245,0.5); }
 .btn-primary .material-icons-round { font-size: 1.1rem; }
 
 .btn-secondary {
@@ -161,8 +167,10 @@ nav .hamburger span { background: var(--blanco) !important; }
   color: var(--blanco); padding: 0.9rem 1.8rem; border-radius: 50px;
   text-decoration: none; font-weight: 700; font-size: 1rem; transition: all 0.2s;
 }
-.btn-secondary:hover { background: rgba(255,255,255,0.12); border-color: var(--blanco); }
+.btn-secondary:hover,
+.btn-secondary:focus-visible { background: rgba(255,255,255,0.12); border-color: var(--celeste); box-shadow: 0 0 20px rgba(168,212,245,0.4), inset 0 0 12px rgba(168,212,245,0.12); }
 .btn-secondary .material-icons-round { font-size: 1.1rem; }
+.btn-secondary svg { flex-shrink: 0; }
 
 /* ─── STRIP ─── */
 .strip {
@@ -181,9 +189,10 @@ section { padding: 5rem 2rem; }
   padding: 0.3rem 0.8rem; border-radius: 4px; margin-bottom: 0.6rem;
 }
 .section-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  color: var(--azul-oscuro); line-height: 1; letter-spacing: 1px;
+  font-family: var(--font-titulos);
+  font-weight: 800;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  color: var(--azul-oscuro); line-height: 1.15; letter-spacing: 0.5px;
 }
 
 /* ─── SERVICIOS ─── */
@@ -194,10 +203,10 @@ section { padding: 5rem 2rem; }
   box-shadow: 0 4px 20px rgba(10,42,94,0.08);
   transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column;
 }
-.servicio-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(10,42,94,0.15); }
+.servicio-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(10,42,94,0.15), 0 0 0 1px rgba(58,143,212,0.4), 0 0 26px rgba(58,143,212,0.22); }
 .servicio-card img { width: 100%; height: 200px; object-fit: cover; flex-shrink: 0; }
 .servicio-card-body { padding: 1.3rem; flex: 1; display: flex; flex-direction: column; }
-.servicio-card-body h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; color: var(--azul-oscuro); letter-spacing: 1px; }
+.servicio-card-body h3 { font-family: var(--font-titulos); font-weight: 800; font-size: 1.05rem; color: var(--azul-oscuro); letter-spacing: 0.5px; text-transform: uppercase; }
 .servicio-card-body p { font-size: 0.88rem; color: var(--gris-texto); margin-top: 0.5rem; line-height: 1.6; flex: 1; }
 
 /* ─── HISTORIA ─── */
@@ -214,8 +223,9 @@ section { padding: 5rem 2rem; }
 .historia-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
 .historia-text p { color: rgba(255,255,255,0.8); line-height: 1.9; font-size: 1rem; margin-bottom: 1.2rem; }
 .historia-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.5rem; }
-.stat-box { background: rgba(255,255,255,0.07); border: 1px solid rgba(168,212,245,0.2); border-radius: 12px; padding: 1.2rem; text-align: center; }
-.stat-numero { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--celeste); line-height: 1; }
+.stat-box { background: rgba(255,255,255,0.07); border: 1px solid rgba(168,212,245,0.2); border-radius: 12px; padding: 1.2rem; text-align: center; transition: border-color 0.3s, box-shadow 0.3s; }
+.stat-box:hover { border-color: rgba(168,212,245,0.55); box-shadow: 0 0 20px rgba(168,212,245,0.18), inset 0 0 16px rgba(168,212,245,0.06); }
+.stat-numero { font-family: var(--font-titulos); font-weight: 800; font-size: 2rem; color: var(--celeste); line-height: 1.1; }
 .stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-top: 0.3rem; }
 .historia-foto { position: relative; }
 .historia-foto img { width: 100%; border-radius: 16px; object-fit: cover; height: 100%; max-height: 520px; min-height: 300px; box-shadow: 0 20px 60px rgba(0,0,0,0.4); display: block; }
@@ -238,6 +248,26 @@ section { padding: 5rem 2rem; }
   transition: transform 0.25s; pointer-events: none;
 }
 .galeria-item:hover .galeria-zoom-icon { transform: translate(-50%, -50%) scale(1); }
+.galeria-item { transition: box-shadow 0.3s; }
+.galeria-item:hover { box-shadow: 0 0 0 2px rgba(58,143,212,0.5), 0 0 24px rgba(58,143,212,0.3); }
+
+/* Último item: indicador de que hay más fotos */
+.galeria-item--more .galeria-more-overlay {
+  position: absolute; inset: 0; z-index: 2;
+  background: rgba(10,42,94,0.72);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0.2rem; color: var(--blanco); border-radius: 12px;
+  transition: background 0.3s;
+}
+.galeria-item--more:hover .galeria-more-overlay { background: rgba(10,42,94,0.55); }
+.galeria-more-num {
+  font-family: var(--font-titulos); font-weight: 800; font-size: 2.2rem;
+  text-shadow: 0 0 18px rgba(168,212,245,0.8);
+}
+.galeria-more-label {
+  font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+  color: var(--celeste);
+}
 
 /* ─── UBICACIÓN ─── */
 .ubicacion { background: var(--blanco); }
@@ -259,13 +289,13 @@ section { padding: 5rem 2rem; }
 
 /* ─── CTA FINAL ─── */
 .cta-final { background: linear-gradient(135deg, var(--azul-oscuro), var(--azul-medio)); text-align: center; padding: 5rem 2rem; }
-.cta-final h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); color: var(--blanco); letter-spacing: 2px; }
+.cta-final h2 { font-family: var(--font-titulos); font-weight: 800; font-size: clamp(1.9rem, 4vw, 3rem); color: var(--blanco); letter-spacing: 0.5px; }
 .cta-final p { color: rgba(255,255,255,0.8); font-size: 1.05rem; margin-top: 1rem; margin-bottom: 2.5rem; }
 
 /* ─── FOOTER ─── */
 footer { background: var(--azul-oscuro); padding: 3rem 2rem 2rem; border-top: 3px solid var(--azul-claro); }
 .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem; align-items: start; }
-.footer-brand h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--blanco); letter-spacing: 2px; }
+.footer-brand h3 { font-family: var(--font-titulos); font-weight: 800; font-size: 1.35rem; color: var(--blanco); letter-spacing: 1px; }
 .footer-brand h3 span { color: var(--celeste); }
 .footer-brand p { color: rgba(255,255,255,0.55); font-size: 0.85rem; margin-top: 0.7rem; line-height: 1.7; }
 .footer-redes { display: flex; gap: 0.8rem; margin-top: 1.2rem; }
@@ -368,8 +398,11 @@ footer { background: var(--azul-oscuro); padding: 3rem 2rem 2rem; border-top: 3p
 }
 .beneficio-card:hover {
   border-color: var(--celeste);
-  box-shadow: 0 8px 32px rgba(10,42,94,0.1);
+  box-shadow: 0 8px 32px rgba(10,42,94,0.1), 0 0 22px rgba(58,143,212,0.22);
   transform: translateY(-4px);
+}
+.beneficio-card:hover .beneficio-icon {
+  box-shadow: 0 0 20px rgba(168,212,245,0.55);
 }
 .beneficio-icon {
   width: 64px; height: 64px;
@@ -377,16 +410,19 @@ footer { background: var(--azul-oscuro); padding: 3rem 2rem 2rem; border-top: 3p
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   margin: 0 auto 1.2rem;
+  transition: box-shadow 0.3s;
 }
 .beneficio-icon .material-icons-round {
   font-size: 1.8rem;
   color: var(--celeste);
 }
 .beneficio-card h3 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.2rem;
+  font-family: var(--font-titulos);
+  font-weight: 800;
+  font-size: 1rem;
   color: var(--azul-oscuro);
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
   margin-bottom: 0.6rem;
 }
 .beneficio-card p {
@@ -454,3 +490,120 @@ footer { background: var(--azul-oscuro); padding: 3rem 2rem 2rem; border-top: 3p
 .footer-col--horarios {
   padding-top: 0;
 }
+
+/* ─── LÁMPARA COLGANTE (interruptor de modo nocturno) ─── */
+.lamp-toggle {
+  position: fixed;
+  top: 0;
+  right: clamp(1.4rem, 6vw, 4.5rem);
+  z-index: 90;
+  background: none;
+  border: none;
+  padding: 0 0.4rem 0.6rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: top center;
+  transition: transform 0.4s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.lamp-toggle:hover { transform: rotate(-2.5deg); }
+.lamp-toggle:focus-visible { outline: 2px solid var(--celeste); outline-offset: 4px; border-radius: 8px; }
+.lamp-cord {
+  width: 3px;
+  height: 96px;
+  background: linear-gradient(180deg, rgba(6,20,46,0.9), #06142e);
+  border-radius: 0 0 2px 2px;
+}
+.lamp-shade {
+  width: 48px;
+  height: 30px;
+  background: linear-gradient(180deg, #0a2a5e 20%, #1251a3);
+  clip-path: polygon(32% 0, 68% 0, 100% 100%, 0 100%);
+  position: relative;
+  z-index: 2;
+}
+.lamp-bulb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  margin-top: -8px;
+  z-index: 1;
+  background: radial-gradient(circle at 35% 30%, #fffdf2, #ffe9a3 55%, #f6c453);
+  box-shadow:
+    0 0 16px 6px rgba(255,222,120,0.75),
+    0 0 60px 26px rgba(255,222,120,0.28);
+  transition: background 0.5s, box-shadow 0.5s;
+}
+.lamp-toggle:hover .lamp-bulb {
+  box-shadow:
+    0 0 20px 8px rgba(255,222,120,0.85),
+    0 0 80px 34px rgba(255,222,120,0.35);
+}
+/* Lámpara apagada en modo nocturno */
+body.night .lamp-bulb {
+  background: radial-gradient(circle at 35% 30%, #b7c6dd, #7b8ca6 60%, #5a6a84);
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+}
+body.night .lamp-toggle:hover .lamp-bulb {
+  box-shadow: 0 0 12px 3px rgba(168,212,245,0.25);
+}
+body.night .lamp-cord { background: linear-gradient(180deg, rgba(0,0,0,0.6), #020a1a); }
+body.night .lamp-shade { background: linear-gradient(180deg, #081c40 20%, #0b2a5c); }
+
+@media (max-width: 768px) {
+  .lamp-toggle { right: 1.1rem; }
+  .lamp-cord { height: 66px; }
+  .lamp-shade { width: 40px; height: 25px; }
+  .lamp-bulb { width: 18px; height: 18px; margin-top: -6px; }
+}
+
+/* ─── MODO NOCTURNO (la lámpara se apaga) ─── */
+body,
+section,
+.strip,
+footer,
+.beneficio-card,
+.servicio-card,
+.section-title,
+.section-tag,
+.ubicacion-grid {
+  transition: background 0.6s ease, background-color 0.6s ease, color 0.6s ease, border-color 0.6s ease;
+}
+
+body.night {
+  --gris-texto: #9db4d6;
+  background: #081c40;
+  color: #e8f1fb;
+}
+body.night .hero {
+  background: linear-gradient(135deg, #030b1e 0%, #081c40 60%, #0b2a5c 100%);
+}
+body.night .hero-overlay {
+  background: linear-gradient(135deg, rgba(3,11,30,0.92) 0%, rgba(8,28,64,0.85) 60%, rgba(11,42,92,0.75) 100%);
+}
+body.night .strip { background: #0b2a5c; }
+body.night .beneficios,
+body.night .ubicacion { background: #081c40; }
+body.night .servicios,
+body.night .galeria { background: #061634; }
+body.night .historia,
+body.night footer { background: #040f26; }
+body.night .cta-final { background: linear-gradient(135deg, #040f26, #0b2a5c); }
+body.night .section-title { color: #eef5fd; }
+body.night .section-tag { background: rgba(168,212,245,0.12); color: var(--celeste); }
+body.night .beneficio-card {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(168,212,245,0.15);
+}
+body.night .beneficio-card h3 { color: var(--celeste-light); }
+body.night .beneficio-card p { color: #9db4d6; }
+body.night .servicio-card {
+  background: #0b2a5c;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+body.night .servicio-card-body h3 { color: var(--celeste-light); }
+body.night .servicio-card-body p { color: #9db4d6; }
+body.night .ubicacion-grid { box-shadow: 0 8px 40px rgba(0,0,0,0.5); }
+body.night .footer-bottom { border-top-color: rgba(255,255,255,0.08); }

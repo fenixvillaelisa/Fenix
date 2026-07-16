@@ -47,27 +47,47 @@ navLinks.querySelectorAll('a').forEach(a => {
   });
 });
 
+// ─── Lámpara colgante: modo nocturno ───
+const lampToggle = document.getElementById('lamp-toggle');
+
+function applyTheme(night) {
+  document.body.classList.toggle('night', night);
+  lampToggle.setAttribute('aria-pressed', night);
+  lampToggle.setAttribute('aria-label', night ? 'Prender la luz (modo día)' : 'Apagar la luz (modo nocturno)');
+  lampToggle.title = night ? '¡Prendé la luz!' : '¡Probá apagar la luz!';
+}
+
+lampToggle.addEventListener('click', () => {
+  const night = !document.body.classList.contains('night');
+  applyTheme(night);
+  try { localStorage.setItem('fenix-theme', night ? 'night' : 'day'); } catch (e) {}
+});
+
+try {
+  if (localStorage.getItem('fenix-theme') === 'night') applyTheme(true);
+} catch (e) {}
+
 // ─── Lightbox ───
-let lbItems = [];
+// La galería muestra 5 fotos, pero el lightbox recorre el catálogo completo
+const GALLERY_IMAGES = Array.from({ length: 25 }, (_, i) => 'images/producto' + (i + 1) + '.jpg');
 let lbIndex = 0;
 
 function openLightbox(el) {
-  lbItems = Array.from(document.querySelectorAll('.galeria-item img'));
-  lbIndex = lbItems.indexOf(el.querySelector('img'));
+  const src = el.querySelector('img').getAttribute('src');
+  lbIndex = Math.max(0, GALLERY_IMAGES.indexOf(src));
   showLightboxImg();
   const lb = document.getElementById('lightbox');
   lb.style.display = 'flex';
   document.body.style.overflow = 'hidden';
 }
 function showLightboxImg() {
-  const img = lbItems[lbIndex];
-  document.getElementById('lb-img').src = img.src;
-  document.getElementById('lb-img').alt = img.alt;
+  document.getElementById('lb-img').src = GALLERY_IMAGES[lbIndex];
+  document.getElementById('lb-img').alt = 'Producto Fenix Iluminación';
   // Solo muestra el contador, sin nombre de archivo
-  document.getElementById('lb-counter').textContent = (lbIndex + 1) + ' / ' + lbItems.length;
+  document.getElementById('lb-counter').textContent = (lbIndex + 1) + ' / ' + GALLERY_IMAGES.length;
 }
 function navLightbox(dir) {
-  lbIndex = (lbIndex + dir + lbItems.length) % lbItems.length;
+  lbIndex = (lbIndex + dir + GALLERY_IMAGES.length) % GALLERY_IMAGES.length;
   showLightboxImg();
 }
 function closeLightbox() {
